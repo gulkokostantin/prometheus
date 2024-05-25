@@ -21,6 +21,18 @@ def test_repo_can_be_found(github_api):
 
 
 @pytest.mark.api
+def test_user_following(github_api):
+    user_following = github_api.get_user_following("octocat")
+    print(user_following)
+
+
+@pytest.mark.api
+def test_is_following(github_api):
+    is_following = github_api.is_following("octocat", "YanZhiwei345")
+    print(is_following)
+
+
+@pytest.mark.api
 def test_repo_cannot_be_found(github_api):
     r = github_api.search_repo('sdfhhhjjtjyuu')
     assert r['total_count'] == 0
